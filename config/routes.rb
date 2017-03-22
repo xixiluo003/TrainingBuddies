@@ -5,11 +5,8 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  resources :workouts do
-    resources :events
-  end
-
   resources :users do
+    resources :workouts
     resources :events
   end
 

@@ -1,1 +1,8 @@
-<h1>Group home</h1>
+<h1>group home</h1>
+
+<% @usergroup.each do |g| %>
+  <%= link_to g.group_name, group_path(g) %>
+  </br>
+<% end %>
+
+</br>
