@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group: one
+  user: one
+  workout: one
+  start_event: 2017-03-21 17:35:05
+  end_event: 2017-03-21 17:35:05
+  location: MyString
+
+two:
+  group: two
+  user: two
+  workout: two
+  start_event: 2017-03-21 17:35:05
+  end_event: 2017-03-21 17:35:05
+  location: MyString
