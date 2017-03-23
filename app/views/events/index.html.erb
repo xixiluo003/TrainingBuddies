@@ -1,0 +1,18 @@
+<div id="events">
+  <% for event in @events %>
+    <div class="event">
+      <%=simple_format event.content %>
+    </div>
+  <% end %>
+</div>
+
+
+<h2>New Event</h2>
+
+<% form_for [@happenings, Event.new] do |f| %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

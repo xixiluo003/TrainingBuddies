@@ -20,9 +20,8 @@ class GroupsController < ApplicationController
     puts "@group: #{@group.inspect}"
     @users = @group.users
     puts "@users: #{@users.inspect}"
-    @events = @group.events
-    puts "@events: #{@events.inspect}"
-
+    @events = Event.where(group_id: @group)
+    puts "\n****** @events: #{@events.inspect}"
   end
 
 

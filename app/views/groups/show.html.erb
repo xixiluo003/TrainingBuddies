@@ -1,12 +1,25 @@
 <h1>SHOW GROUP</h1>
 
-<p>Group Name: <%= @group.group_name %></p></br>
-<p>Group Leader: <%= @group.group_leader %></p></br>
-<p>Group Type: <%= @group.group_type %></p></br>
-<p>Group Goal: <%= @group.group_goal %></p></br>
+<p>Group Name: <%= @group.group_name %></p>
+<p>Group Leader: <%= @group.group_leader %></p>
+<p>Group Type: <%= @group.group_type %></p>
+<p>Group Goal: <%= @group.group_goal %></p>
+</br>
 
 <p>Group Members:</p>
 <% @users.each do |user| %>
   <%= user.first_name %></br>
 <% end %>
-</br>
+<br />
+
+
+<p>Events</p>
+<% @events.each do |event| %>
+  <%= event.user_id %></br>
+  <%= event.location %></br>
+<% end %>
+<br />
+
+
+<%= link_to "New User Event", new_user_event_path(current_user) %>
+<%= link_to "New Group Event", new_group_event_path(@group) %>
