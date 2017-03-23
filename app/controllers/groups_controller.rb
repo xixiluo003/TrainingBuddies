@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
 
   def home
     puts "\n******* home *******"
-    @group = Group.all
+    @groups = Group.all
     @usergroup = current_user.groups
     puts "@usergroup: #{@usergroup.inspect}"
   end

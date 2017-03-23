@@ -1,0 +1,13 @@
+<h3>Event Form</h3>
+
+<%= form_for [@happenings, Event.new] do |f| %>
+  <p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.label :start_event %><%= f.datetime_select :start_event, :ampm => true, :minute_step => 15 %><br/>
+    <%= f.label :end_event %><%= f.datetime_select :end_event, :ampm => true, :minute_step => 15 %><br/>
+    <%= f.label :group %><%= select("event", "group_id", @usergroup.all.map { |r| [ r.group_name, r.id ] }, { :include_blank => true }) %><br/>
+    <%= f.label :workout %><%= select("event", "workout_id", @workouts.all.map { |r| [ r.workout_type, r.id ] }, { :include_blank => true }) %><br/>
+    <%= f.label :location %><%= f.text_field :location %><br/>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
