@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321213505) do
+ActiveRecord::Schema.define(version: 20170324145628) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "user_id"
     t.integer  "workout_id"
+    t.string   "event_name"
     t.datetime "start_event"
     t.datetime "end_event"
-    t.string   "location"
+    t.string   "event_location"
     t.string   "happenings_type"
     t.integer  "happenings_id"
     t.datetime "created_at",      null: false
@@ -37,6 +48,17 @@ ActiveRecord::Schema.define(version: 20170321213505) do
     t.text     "group_goal"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_posts_on_group_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -71,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170321213505) do
 
   create_table "workouts", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "workout_name"
     t.string   "workout_type"
     t.text     "workout_content"
     t.datetime "created_at",      null: false

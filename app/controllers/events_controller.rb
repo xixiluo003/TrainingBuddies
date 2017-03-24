@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @event = @happenings.events.build(event_params)
     if @event.save
       flash[:notice] = "Successfully created comment."
-      redirect_to :id => nil
+      redirect_to "/"
     else
       render :action => 'new'
     end
@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:user_id, :group_id, :workout_id, :start_event, :end_event, :location)
+    params.require(:event).permit(:user_id, :group_id, :workout_id, :event_name, :start_event, :end_event, :event_location)
   end
 
 

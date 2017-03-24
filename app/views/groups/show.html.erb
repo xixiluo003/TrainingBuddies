@@ -15,8 +15,9 @@
 
 <p>Events</p>
 <% @events.each do |event| %>
-  <%= event.user_id %></br>
-  <%= event.location %></br>
+  <%= User.find(event.user_id).first_name %></br>
+  <%= event.event_name %></br>
+  <%= event.event_location %></br>
 <% end %>
 <br />
 
