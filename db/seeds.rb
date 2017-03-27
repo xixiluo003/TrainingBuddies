@@ -1,7 +1,7 @@
 Group.destroy_all
 Group.create([
-  { group_name:"XiXi-Walker-Tom", group_leader:"XiXi", group_type:"Weekend Meetup", group_goal:"We want to learn more about how to get better at climbing!" },
-  { group_name:"Tom-Alain", group_leader:"Tom", group_type:"Monday Group", group_goal:"Tom can help Alain with his running goal" }
+  { group_name:"XiXi-Walker-Tom", user_id:1, group_type:"Weekend Meetup", group_goal:"We want to learn more about how to get better at climbing!" },
+  { group_name:"Tom-Alain", user_id:3, group_type:"Monday Group", group_goal:"Tom can help Alain with his running goal" }
 ])
 
 
@@ -35,9 +35,3 @@ Comment.create([
   { user_id:3, post_id:3, content:"Yea we can talk when we meet up. When are you going?" },
   { user_id:4, post_id:3, content:"I can go tonight!" },
 ])
-
-# Event.destroy_all
-# Event.create([
-#   { start_event:nil, end_event:nil, location:"New York, New York" },
-#   { start_event:nil, end_event:nil, location:"Rockville, Maryland" }
-# ])

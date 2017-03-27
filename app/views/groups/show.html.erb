@@ -1,26 +1,68 @@
 <h1>SHOW GROUP</h1>
+<div id="groupinfo">
+  <p>Group Name: <%= @group.group_name %></p>
+  <p>Group Leader: <%= User.find(@group.user_id).first_name %></p>
+  <p>Group Type: <%= @group.group_type %></p>
+  <p>Group Goal: <%= @group.group_goal %></p>
+  </br>
 
-<p>Group Name: <%= @group.group_name %></p>
-<p>Group Leader: <%= @group.group_leader %></p>
-<p>Group Type: <%= @group.group_type %></p>
-<p>Group Goal: <%= @group.group_goal %></p>
-</br>
-
-<p>Group Members:</p>
-<% @users.each do |user| %>
-  <%= user.first_name %></br>
-<% end %>
-<br />
-
+  <p>Group Members:</p>
+  <% @users.each do |user| %>
+    <%= user.first_name %></br>
+  <% end %>
+  <br />
+</div>
 
 <p>Events</p>
-<% @events.each do |event| %>
-  <%= User.find(event.user_id).first_name %></br>
-  <%= event.event_name %></br>
-  <%= event.event_location %></br>
+<div id="calendar">
+  <% @events.each do |event| %>
+    <%= User.find(event.user_id).first_name %></br>
+    <%= event.event_name %></br>
+    <%= event.event_location %></br>
+    <%= link_to "Edit", edit_user_event_path(current_user, event) %></br>
+  <% end %>
+  <br />
+</div>
+
+<!--+++++++ posts +++++++-->
+<p>Posts</p>
+<%= form_for [current_user, @post] do |f| %>
+  <p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.label :title %><%= f.text_field :title %>
+    <%= f.label :content %><%= f.text_field :content %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
 <% end %>
-<br />
 
+<h4>Current Post</h4>
 
-<%= link_to "New User Event", new_user_event_path(current_user) %>
-<%= link_to "New Group Event", new_group_event_path(@group) %>
+<div id="post">
+  <% @posts.each do |post| %>
+    <h4>Post <%= post.id %></h4>
+    <%= User.find(post.user_id).first_name %></br>
+    <%= post.title %></br>
+    <%= post.content %></br>
+    <!--+++++++ comments +++++++-->
+    <h5>Comments for post <%= post.id %></h5>
+      <% @comments.each do |comment| %>
+        <% if comment.post_id == post.id %>
+          <%= User.find(comment.user_id).first_name %></br>
+          <%= comment.content %></br>
+        <% end %>
+      <% end %></br>
+      <!--+++++++ comments_form +++++++-->
+      <h5>Add New Comments</h5><br>
+      <%= form_for [current_user, @comment] do |f| %>
+        <p>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :post_id, value: post.id %>
+          <%= f.label :content %><%= f.text_field :content %>
+        </p>
+        <p><%= f.submit "Submit" %></p>
+      <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New Event", new_user_event_path(current_user) %> <br />

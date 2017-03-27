@@ -43,11 +43,12 @@ ActiveRecord::Schema.define(version: 20170324145628) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "group_name"
-    t.string   "group_leader"
+    t.integer  "user_id"
     t.string   "group_type"
     t.text     "group_goal"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|

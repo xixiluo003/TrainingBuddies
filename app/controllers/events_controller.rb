@@ -22,11 +22,31 @@ class EventsController < ApplicationController
     @workouts = Workout.where(user_id: current_user)
     @event = @happenings.events.build(event_params)
     if @event.save
-      flash[:notice] = "Successfully created comment."
+      flash[:notice] = "Successfully created event."
       redirect_to "/"
     else
       render :action => 'new'
     end
+  end
+
+  def edit
+    puts "\n ******* edit_event *******"
+    puts "params: #{params.inspect}"
+    @event = Event.find(params[:id])
+    puts "@event: #{@event.inspect}"
+    @usergroup = current_user.groups
+    @workouts = Workout.where(user_id: current_user)
+  end
+
+  def update
+    @event = Event.find(event_params[:id])
+    if @event.update(event_params)
+      flash[:notice] = "Successfully updated event."
+      redirect_to "/"
+    else
+      puts "Didn't work"
+    end
+
   end
 
   private
@@ -40,7 +60,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:user_id, :group_id, :workout_id, :event_name, :start_event, :end_event, :event_location)
+    params.require(:event).permit(:user_id, :id, :group_id, :workout_id, :event_name, :start_event, :end_event, :event_location)
   end
 
 

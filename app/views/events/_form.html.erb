@@ -1,8 +1,9 @@
 <h3>Event Form</h3>
 
-<%= form_for [@happenings, Event.new] do |f| %>
+<%= form_for [current_user, @event] do |f| %>
   <p>
     <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :id, value: @event.id %>
     <%= f.label :event_name %><%= f.text_field :event_name %><br/>
     <%= f.label :start_event %><%= f.datetime_select :start_event, :ampm => true, :minute_step => 15 %><br/>
     <%= f.label :end_event %><%= f.datetime_select :end_event, :ampm => true, :minute_step => 15 %><br/>

@@ -1,7 +1,14 @@
 <h1>group home</h1>
 
+<p>Hello <%= current_user.first_name %>!</p>
+
+<%= link_to "Make a New Group", new_group_path %> <br />
+<%= link_to "Edit User",  edit_user_registration_path %> <br />
+
+<p></p>
+<p>My Groups:</p>
 <% @usergroup.each do |g| %>
-  <%= link_to g.group_name, group_path(g) %>
+  <p><%= link_to g.group_name, group_path(g) %></p>
   </br>
 <% end %>
 
