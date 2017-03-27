@@ -1,11 +1,12 @@
 <h1>SHOW GROUP</h1>
+
+<!--+++++++ group info +++++++-->
 <div id="groupinfo">
   <p>Group Name: <%= @group.group_name %></p>
   <p>Group Leader: <%= User.find(@group.user_id).first_name %></p>
   <p>Group Type: <%= @group.group_type %></p>
   <p>Group Goal: <%= @group.group_goal %></p>
   </br>
-
   <p>Group Members:</p>
   <% @users.each do |user| %>
     <%= user.first_name %></br>
@@ -13,6 +14,7 @@
   <br />
 </div>
 
+<!--+++++++ events +++++++-->
 <p>Events</p>
 <div id="calendar">
   <% @events.each do |event| %>
@@ -23,8 +25,9 @@
   <% end %>
   <br />
 </div>
+<%= link_to "New Event", new_user_event_path(current_user) %> <br />
 
-<!--+++++++ posts +++++++-->
+<!--+++++++ create posts +++++++-->
 <p>Posts</p>
 <%= form_for [current_user, @post] do |f| %>
   <p>
@@ -36,6 +39,7 @@
   <p><%= f.submit "Submit" %></p>
 <% end %>
 
+<!--+++++++ show posts +++++++-->
 <h4>Current Post</h4>
 
 <div id="post">
@@ -52,7 +56,7 @@
           <%= comment.content %></br>
         <% end %>
       <% end %></br>
-      <!--+++++++ comments_form +++++++-->
+      <!--+++++++ create comments +++++++-->
       <h5>Add New Comments</h5><br>
       <%= form_for [current_user, @comment] do |f| %>
         <p>
@@ -64,5 +68,3 @@
       <% end %>
   <% end %>
 </div>
-
-<%= link_to "New Event", new_user_event_path(current_user) %> <br />

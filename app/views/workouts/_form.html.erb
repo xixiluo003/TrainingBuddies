@@ -1,0 +1,11 @@
+<h2>New Workout Form</h2>
+
+<%= form_for [current_user, @workout] do |f| %>
+  <p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.label :workout_name %><%= f.text_field :workout_name %><br/>
+    <%= f.label :workout_type %><%= f.text_field :workout_type %><br/>
+    <%= f.label :workout_content %><%= f.text_field :workout_content %><br/>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

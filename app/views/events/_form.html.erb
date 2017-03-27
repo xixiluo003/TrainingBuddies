@@ -8,7 +8,7 @@
     <%= f.label :start_event %><%= f.datetime_select :start_event, :ampm => true, :minute_step => 15 %><br/>
     <%= f.label :end_event %><%= f.datetime_select :end_event, :ampm => true, :minute_step => 15 %><br/>
     <%= f.label :group %><%= select("event", "group_id", @usergroup.all.map { |r| [ r.group_name, r.id ] }, { :include_blank => true }) %><br/>
-    <%= f.label :workout %><%= select("event", "workout_id", @workouts.all.map { |r| [ r.workout_type, r.id ] }, { :include_blank => true }) %><br/>
+    <%= f.label :workout %><%= select("event", "workout_id", @workouts.all.map { |r| [ r.workout_name, r.id ] }, { :include_blank => true }) %><br/>
     <%= f.label :location %><%= f.text_field :event_location %><br/>
   </p>
   <p><%= f.submit "Submit" %></p>

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def index
     puts "\n******* index *******"
@@ -7,16 +7,16 @@ class CommentsController < ApplicationController
 
   def
     new
-    puts "\n******* new_post *******"
+    puts "\n******* new_comment *******"
     @comment = Comment.new
 
   end
 
   def create
-    puts "\n******* create_post *******"
+    puts "\n******* create_comment *******"
     @comment = Comment.new(comment_params)
     if @comment.save
-      flash[:notice] = "Successfully created post."
+      flash[:notice] = "Successfully created comment."
       redirect_to "/"
     end
   end
