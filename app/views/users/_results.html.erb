@@ -1,0 +1,9 @@
+<p>Search Results</p>
+
+<% @all_users.each do |user| %>
+  <%= user.first_name %>
+  <%= user.last_name %>
+  <%= user.email %>
+  <%= user.personal_bio %><br>
+
+<% end %><br>

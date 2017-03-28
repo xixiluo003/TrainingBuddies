@@ -4,6 +4,14 @@ class GroupsController < ApplicationController
   # ======= GET / =======
   def index
     puts "\n******* index *******"
+
+		@all_users = User.all
+		if params[:search]
+			@all_users = User.search(params[:search]).order("created_at DESC")
+		else
+			@all_users = User.all.order('created_at DESC')
+		end
+
   end
 
   def home
@@ -11,6 +19,16 @@ class GroupsController < ApplicationController
     @groups = Group.all
     @usergroup = current_user.groups
     puts "@usergroup: #{@usergroup.inspect}"
+		puts "current_user: #{current_user.inspect}"
+
+		@all_users = User.all
+		if params[:search]
+			@all_users = User.search(params[:search]).order("created_at DESC")
+		else
+			@all_users = User.all.order('created_at DESC')
+		end
+
+
   end
 
 
@@ -27,6 +45,7 @@ class GroupsController < ApplicationController
 		@post = Post.new
 		@comments = Comment.where(post_id: @posts)
 		@comment = Comment.new
+
   end
 
 def new
@@ -36,7 +55,13 @@ end
 
 def create
 	puts "\n******* create_group *******"
+
 	@group = Group.new(group_params)
+	if @group.save
+		flash[:notice] = "Successfully created group."
+		UserGroup.create(user_id: current_user.id, group_id: @group.id, user_type: " Group Leader" )
+		redirect_to "/"
+	end
 end
 
 private
@@ -47,6 +72,7 @@ private
 
 	def group_params
 		puts "******* group_params *******"
-		params.require(:group).permit(:group_name, :group_leader, :group_type, :group_goal)
+		params.require(:group).permit(:group_name, :user_id, :group_type, :group_goal)
 	end
+
 end

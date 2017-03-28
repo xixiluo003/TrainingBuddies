@@ -15,6 +15,5 @@ Rails.application.routes.draw do
 
   get "/" => "groups#home"
   get "/home" => "group#home"
-  get "/posts/new" => "posts#new"
 
 end

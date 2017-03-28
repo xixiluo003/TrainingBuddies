@@ -1,0 +1,12 @@
+<h4>Calendar</h4>
+
+<div id="calendar">
+  <% @events.each do |event| %>
+    <%= User.find(event.user_id).first_name %></br>
+    <%= event.event_name %></br>
+    <%= event.event_location %></br>
+    <%= link_to "Edit", edit_user_event_path(current_user, event) %></br>
+  <% end %>
+  <br />
+</div>
+<%= link_to "New Event", new_user_event_path(current_user) %> <br />

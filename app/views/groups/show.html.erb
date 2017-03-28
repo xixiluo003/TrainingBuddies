@@ -12,23 +12,21 @@
     <%= user.first_name %></br>
   <% end %>
   <br />
+
+  <%= form_tag(groups_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
 </div>
 
 <!--+++++++ events +++++++-->
 <p>Events</p>
-<div id="calendar">
-  <% @events.each do |event| %>
-    <%= User.find(event.user_id).first_name %></br>
-    <%= event.event_name %></br>
-    <%= event.event_location %></br>
-    <%= link_to "Edit", edit_user_event_path(current_user, event) %></br>
-  <% end %>
-  <br />
-</div>
-<%= link_to "New Event", new_user_event_path(current_user) %> <br />
+<%= render :partial => "calendar" %>
 
 <!--+++++++ create posts +++++++-->
-<p>Posts</p>
+<h3>Posts</h3>
+<h4>New Posts</h4>
 <%= form_for [current_user, @post] do |f| %>
   <p>
     <%= f.hidden_field :user_id, value: current_user.id %>
