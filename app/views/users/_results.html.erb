@@ -1,12 +1,19 @@
-<p>Search Results</p>
-
+<h2>Search Results</h2>
 <div class="ui raised teal segment" id="groupInfo">
+
+  <h4>Select A Group You Want To Add This Buddy to:</h4>
+
+  <div class="ui">
+    <%= select("group_id", 0, @usergroups.all.map { |r| [ r.group_name, r.id ] }, { :include_blank => true }) %><br/>
+  </div>
 
   <% @all_users.each do |user| %>
     <%= user.first_name %>
     <%= user.last_name %>
     <%= user.email %>
-    <%= user.personal_bio %><br>  
+    <%= user.personal_bio %><br>
+    <%= link_to "Add", "/adduser/#{user.id}" %>
   <% end %><br>
+
 
 </div>
