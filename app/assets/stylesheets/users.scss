@@ -1,3 +1,159 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//======= ====== log in page ======= ======
+.loginPage{
+  display: block;
+}
+
+.mainTitle {
+  margin: 5% 0 0 1%;
+}
+
+.mainTitle > p {
+  font-size: 100px;
+  color: white;
+  margin-left: 24%;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.secTitle {
+  margin: 1% 0 0 35%;
+}
+
+.secTitle > p {
+  font-size: 50px;
+  color: white;
+}
+
+#loginForm {
+  margin: 7% 0 0 30%;
+  width: 40%;
+  opacity: .4;
+}
+
+.field {
+  height: 35px;
+}
+
+.inputField {
+  height: 43px;
+}
+
+#loginLabel {
+  display: inline-block;
+  color: white;
+  margin-left: 1%;
+}
+
+#loginButton {
+  margin: -2% 0 0 15%;
+  width: 70%
+}
+
+#passwordLink {
+  padding: 5px;
+  margin: 1% 0 0 45%;
+}
+
+#signupLink{
+  float: right;
+  margin: -3% 10% 0 0;
+}
+
+#signupForm {
+  width: 40%;
+  margin: 3% 0 0 30%;
+  opacity: .4;
+}
+
+#signupButton {
+  margin: 5% 0 0 15%;
+  width: 70%;
+}
+
+.popup {
+  margin: 1% 0 0 35%;
+}
+
+.popup > p {
+  text-size: +5;
+}
+
+//======= ====== menu ======= ======
+.homeTitle {
+  display: block;
+  background-color: #444c5c;
+  margin-top: -1%;
+  height: 100px;
+}
+.homeTitle > p {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 0 2%;
+  padding: 20px;
+  height: auto;
+}
+.menuBar {
+  background-color: #7ba4a8;
+  display: block;
+  height: 70px;
+}
+
+.menuButtons {
+  margin-top: 10px;
+  height: 50px;
+}
+
+#menuButtonHome {
+  margin-left: 3%;
+  float: left;
+}
+#menuButtonNewGroup {
+  float: left;
+  margin-left: 1.5%
+}
+#menuButtonWorkout {
+  float: left;
+  margin-left: 1.5%
+}
+#menuButtonEditUser {
+  float: right;
+  margin-right: 1.5%
+
+}
+#menuButtonSignout {
+  float: right;
+  margin-right: 8%
+}
+#menuSearch {
+  float: left;
+  // height: 50px;
+  // width: 100px;
+  margin: 18px 0 0 8%;
+}
+
+//======= ====== GroupHome ======= ======
+
+#welcomeMessage {
+  font-size: 50px;
+  margin: 2% 0 0 15%;
+}
+
+#userIntro {
+  font-size: 20px;
+  margin: 1% 0 4% 3%;
+}
+#groupList {
+  margin: 1% 0 -1.5% 5%;
+  font-size: 18px;
+}
+
+#showgroupForm {
+  width: 70%;
+  margin: 3% 0 0 15%;
+
+}

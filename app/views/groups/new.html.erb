@@ -1,3 +1,12 @@
-<h1>Create New Group</h1>
+<div class="homeTitle">
+  <p>TrainingBuddies.</p>
+</div>
 
+<button class="ui basic teal button" id="backLink">
+  <%= link_to 'Back', :back %>
+</button>
+
+<a href="/home">
+  <button class="ui basic teal button" id="homeLink">Home</button>
+</a>
 <%= render :partial => "form" %>

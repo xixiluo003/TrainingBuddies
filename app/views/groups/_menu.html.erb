@@ -1,0 +1,71 @@
+<% if current_user %>
+  <div class="menuBar">
+
+    <a href="/home">
+      <div class="menuButtons" id="menuButtonHome">
+        <button class="ui big animated fade inverted button" tabindex="0">
+          <div class="visible content">
+            <i class="home icon"></i>
+          </div>
+          <div class="hidden content">
+            Home
+          </div>
+        </button>
+      </div>
+    </a>
+
+    <a href="/groups/new">
+      <div class="menuButtons" id="menuButtonNewGroup">
+        <button class="ui big animated fade inverted button" tabindex="0">
+          <div class="visible content">
+            <i class="users icon"></i>
+          </div>
+          <div class="hidden content">
+            Group
+          </div>
+        </button>
+      </div>
+    </a>
+
+    <div class="menuButtons" id="menuButtonWorkout">
+      <button class="ui big animated fade inverted button" tabindex="0">
+        <div class="visible content">
+          <i class="write icon"></i>
+        </div>
+        <div class="hidden content">
+          <%= link_to "Workout", new_user_workout_path(current_user.id) %><br>
+        </div>
+      </button>
+    </div>
+
+    <%= form_tag(users_path, :method => "get", :class => "ui left icon input", :id => "menuSearch" ) do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Buddies" %>
+      <i class="search icon"><br></i>
+    <% end %>
+
+    <div class="menuButtons" id="menuButtonSignout">
+      <button class="ui big animated fade inverted button" tabindex="0">
+        <div class="visible content">
+          <i class="remove icon"></i>
+        </div>
+        <div class="hidden content">
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        </div>
+      </button>
+    </div>
+
+    <a href="/users/edit">
+      <div class="menuButtons" id="menuButtonEditUser">
+        <button class="ui big animated fade inverted button" tabindex="0">
+          <div class="visible content">
+            <i class="edit icon"></i>
+          </div>
+          <div class="hidden content">
+            Profile
+          </div>
+        </button>
+      </div>
+    </a>
+
+  </div>
+<% end %> </br>

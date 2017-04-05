@@ -27,13 +27,11 @@ class GroupsController < ApplicationController
 		else
 			@all_users = User.all.order('created_at DESC')
 		end
-
-
   end
 
 
   def show
-    puts "\n******* show *******"
+    puts "\n******* show_group *******"
     @group = Group.find(params[:id])
     # puts "@group: #{@group.inspect}"
     @users = @group.users
@@ -48,6 +46,17 @@ class GroupsController < ApplicationController
 
   end
 
+def getevents
+	puts "\n******* getevents *******"
+	puts "params: #{params.inspect}"
+	@group = Group.find(params[:group_id])
+	@events = Event.where(group_id: @group)
+
+	respond_to do |format|
+		format.json {render :json => @events}
+	end
+end
+
 def new
 	puts "\n******* new_group *******"
 	@group = Group.new
@@ -59,7 +68,7 @@ def create
 	@group = Group.new(group_params)
 	if @group.save
 		flash[:notice] = "Successfully created group."
-		UserGroup.create(user_id: current_user.id, group_id: @group.id, user_type: " Group Leader" )
+		UserGroup.create(user_id: current_user.id, group_id: @group.id, user_type: "Group Leader" )
 		redirect_to "/"
 	end
 end

@@ -1,68 +1,96 @@
-<h1>SHOW GROUP</h1>
+<div class="homeTitle">
+  <p>TrainingBuddies.</p>
+</div>
+
+<%= render :partial => "menu" %>
+
 
 <!--+++++++ group info +++++++-->
-<div id="groupinfo">
-  <p>Group Name: <%= @group.group_name %></p>
-  <p>Group Leader: <%= User.find(@group.user_id).first_name %></p>
-  <p>Group Type: <%= @group.group_type %></p>
-  <p>Group Goal: <%= @group.group_goal %></p>
-  </br>
-  <p>Group Members:</p>
-  <% @users.each do |user| %>
-    <%= user.first_name %></br>
-  <% end %>
-  <br />
+<div class="ui raised teal segment" id="groupInfo">
+  <p><%= @group.group_name %></p>
 
-  <%= form_tag(groups_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
-    <%= submit_tag "Search" %>
-  <% end %>
+  <div class="ui raised segment" id="groupmainOther">
+    Group Created By:
+    <%= User.find(@group.user_id).first_name %><br>
+    Group Type:
+    <%= @group.group_type %><br>
+    Group Goal:
+    <%= @group.group_goal %><br>
+
+    <div id="groupinfo">
+      <p>Group Members:</p>
+      <% @users.each do |user| %>
+        <%= user.first_name %></br>
+      <% end %><br />
+    </div>
+  </div></br>
 
 </div>
 
 <!--+++++++ events +++++++-->
-<p>Events</p>
-<%= render :partial => "calendar" %>
+
+<div id="calContainer">
+  <%= render :partial => "calendar" %>
+</div>
 
 <!--+++++++ create posts +++++++-->
-<h3>Posts</h3>
-<h4>New Posts</h4>
-<%= form_for [current_user, @post] do |f| %>
-  <p>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :group_id, value: @group.id %>
-    <%= f.label :title %><%= f.text_field :title %>
-    <%= f.label :content %><%= f.text_field :content %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+<div class="ui raised segment" id="messBoard">
 
-<!--+++++++ show posts +++++++-->
-<h4>Current Post</h4>
 
-<div id="post">
-  <% @posts.each do |post| %>
-    <h4>Post <%= post.id %></h4>
-    <%= User.find(post.user_id).first_name %></br>
-    <%= post.title %></br>
-    <%= post.content %></br>
-    <!--+++++++ comments +++++++-->
-    <h5>Comments for post <%= post.id %></h5>
-      <% @comments.each do |comment| %>
-        <% if comment.post_id == post.id %>
-          <%= User.find(comment.user_id).first_name %></br>
-          <%= comment.content %></br>
-        <% end %>
-      <% end %></br>
-      <!--+++++++ create comments +++++++-->
-      <h5>Add New Comments</h5><br>
-      <%= form_for [current_user, @comment] do |f| %>
-        <p>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :post_id, value: post.id %>
-          <%= f.label :content %><%= f.text_field :content %>
-        </p>
-        <p><%= f.submit "Submit" %></p>
-      <% end %>
+  <div class="ui big horizontal divided list" id="messageHead">
+    <div class="item">
+      <i class="huge comments blue icon"></i>
+      <div class="content">
+        <div class="header">Messages</div>
+      </div>
+    </div>
+  </div>
+
+  <%= form_for [current_user, @post], :html => {:class => 'ui form', :id => 'messageForm'} do |f| %>
+    <div class="field">
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :group_id, {value: @group.id, id: "groupID"}  %>
+      <%= f.text_field :title, placeholder: "Title" %>
+
+      <%= f.text_area :content, placeholder: "Share with your Buddies" %>
+      <%= f.submit "Submit" %>
+    </div>
   <% end %>
-</div>
+
+  <!--+++++++ show posts +++++++-->
+
+  <% @posts.each do |post| %>
+    <div class="ui raised teal segment" id="post">
+
+      <%= User.find(post.user_id).first_name %></br>
+      <%= post.content %>
+
+      <!--+++++++ comments +++++++-->
+      <div class="ui raised blue segment">
+        <div class="content">
+          <% @comments.each do |comment| %>
+            <% if comment.post_id == post.id %>
+              <a class="author">
+                <%= User.find(comment.user_id).first_name %></br>
+              </a>
+              <div class="text">
+                <%= comment.content %></br>
+              </div>
+            <% end %>
+          <% end %></br>
+        <!--+++++++ create comments +++++++-->
+
+          <%= form_for [current_user, @comment], :html => {:class => 'ui reply form', :id => 'commentForm'} do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <div class="field" id="commentfield">
+                <%= f.text_field :content, autofocus: true, placeholder: "Leave a Comment" %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Submit", class: "ui basic teal button", id: "commentButton" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>

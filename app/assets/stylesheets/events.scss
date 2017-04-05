@@ -1,3 +1,84 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//======= ======= GroupShow Page ======= =======
+
+#groupInfo {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#groupInfo > p {
+  font-size: 30px;
+  margin: 1.5% 0 2% 1.5% ;
+  font-weight: bold;
+}
+
+#calContainer {
+  padding: 5%;
+}
+
+#messageForm {
+  display: inline-block;
+  width: 70%;
+  margin-left: 15%;
+}
+
+#post {
+  display: inline-block;
+  width: 70%;
+  margin-left: 15%;
+}
+#messageHead{
+  display: block;
+  width: 100%;
+  // border: 2px solid red;
+  margin-left: 18%;
+  font-weight: bold;
+}
+#messBoard {
+  width: 75%;
+  margin-left: 12.5%;
+}
+
+#creategroupForm {
+  width: 70%;
+  margin: 5% 0 0 15%;
+}
+
+#workoutContent{
+  height: auto;
+}
+#newgroupButton{
+  width: 60%;
+  margin: 1% 0 3% 20%
+}
+
+#createeventForm {
+  width: 70%;
+  margin: 6% 0 0 15%;
+}
+
+#newsessionpageLink{
+  float: right;
+  margin: 1% 3% 0 0;
+}
+
+#backButton {
+  float: right;
+  margin: 1% 8% 0 0;
+  width: 10%;
+}
+
+#backLink {
+  float: right;
+  margin: 1% 15% 0 0;
+  width: 10%;
+}
+
+#homeLink {
+  float: right;
+  margin: 1% 3% 0 0;
+  width: 10%;
+}

@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem "paperclip", "~> 4.2"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

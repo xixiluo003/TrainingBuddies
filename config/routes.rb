@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
 
   get "/" => "groups#home"
-  get "/home" => "group#home"
+  get "/home" => "groups#home"
+  get "/getevents" => "groups#getevents"
 
 end

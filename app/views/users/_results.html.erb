@@ -1,9 +1,12 @@
 <p>Search Results</p>
 
-<% @all_users.each do |user| %>
-  <%= user.first_name %>
-  <%= user.last_name %>
-  <%= user.email %>
-  <%= user.personal_bio %><br>
+<div class="ui raised teal segment" id="groupInfo">
 
-<% end %><br>
+  <% @all_users.each do |user| %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= user.email %>
+    <%= user.personal_bio %><br>  
+  <% end %><br>
+
+</div>

@@ -1,3 +1,18 @@
-<h1>New Event</h1>
-<%= link_to "Build New Workout", new_user_workout_path %>
+<div class="homeTitle">
+  <p>TrainingBuddies.</p>
+</div>
+
+<button class="ui basic teal button" id="backLink">
+  <%= link_to 'Back', :back %>
+</button>
+
+<button class="ui basic teal button" id="newsessionpageLink">
+  <%= link_to "Build New Workout", new_user_workout_path %>
+</button>
+
+<a href="/home">
+  <button class="ui basic teal button" id="homeLink">Home</button>
+</a>
+
+
 <%= render :partial => "form" %>

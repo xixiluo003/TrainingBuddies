@@ -1,11 +1,19 @@
-<h3>creat new group from</h3>
+<div class="ui raised teal segment", id="creategroupForm">
+  <h2> Create a New Group </h2><br>
+  <%= form_for @group, :html => {:class => 'ui form'} do |f| %>
+    <div class="field">
+      <%= f.text_field :group_name, autofocus: true, placeholder: "Give Your Group a Name." %>
+    </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="field">
+      <%= f.text_field :group_type, autofocus: true, placeholder: "Give Your Group a Type. i.e. Weekly" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :group_goal, autofocus: true, placeholder: "What's Your Group Goal?" %>
+    </div>
 
-<%= form_for @group do |f| %>
-  <p>
-    <%= f.label :group_name %><%= f.text_field :group_name %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.label :group_type %><%= f.text_field :group_type %>
-    <%= f.label :group_goal %><%= f.text_field :group_goal %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Submit", class: "ui basic teal button", id: "newgroupButton" %>
+    </div>
+  <% end %>
+</div>

@@ -1,11 +1,23 @@
-<h2>New Workout Form</h2>
+<div class="ui raised teal segment", id="creategroupForm">
+  <h2> Create Your Workout </h2><br>
 
-<%= form_for [current_user, @workout] do |f| %>
-  <p>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.label :workout_name %><%= f.text_field :workout_name %><br/>
-    <%= f.label :workout_type %><%= f.text_field :workout_type %><br/>
-    <%= f.label :workout_content %><%= f.text_field :workout_content %><br/>
-  </p>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+  <%= form_for [current_user, @workout], :html => {:class => 'ui form'} do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="field">
+      <%= f.text_field :workout_name, autofocus: true, placeholder: "Give Your Workout a Name." %><br/>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :workout_type, autofocus: true, placeholder: "Workout Type i.e. Legs, Core or Weight Interval" %><br/>
+    </div>
+
+    <div class="field" id="workoutContent">
+      <%= f.text_area :workout_content, autofocus: true, placeholder: "Create Your Workout!" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit", class: "ui basic teal button", id: "newgroupButton" %>
+    </div>
+
+  <% end %>
+</div>
