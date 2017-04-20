@@ -29,7 +29,7 @@
 
 <!--+++++++ events +++++++-->
 
-<div id="calContainer">
+<div class="ui raised segment" id="calContainer">
   <%= render :partial => "calendar" %>
 </div>
 
@@ -51,10 +51,15 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :group_id, {value: @group.id, id: "groupID"}  %>
       <%= f.text_field :title, placeholder: "Title" %>
-
-      <%= f.text_area :content, placeholder: "Share with your Buddies" %>
-      <%= f.submit "Submit" %>
     </div>
+    <div class="field">
+      <%= f.text_area :content, placeholder: "Share with your Buddies" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Submit", class: "ui basic teal button", id: "postButton" %>
+    </div>
+
+
   <% end %>
 
   <!--+++++++ show posts +++++++-->
@@ -63,6 +68,7 @@
     <div class="ui raised teal segment" id="post">
 
       <%= User.find(post.user_id).first_name %></br>
+      <%= post.title %><br>
       <%= post.content %>
 
       <!--+++++++ comments +++++++-->
@@ -77,6 +83,7 @@
                 <%= comment.content %></br>
               </div>
             <% end %>
+
           <% end %></br>
         <!--+++++++ create comments +++++++-->
 

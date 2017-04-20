@@ -5,8 +5,10 @@
 //======= ======= GroupShow Page ======= =======
 
 #groupInfo {
-  width: 80%;
-  margin-left: 10%;
+  width: 30%;
+  margin-left: 1%;
+  height: 99%;
+  position: fixed;
 }
 
 #groupInfo > p {
@@ -16,20 +18,22 @@
 }
 
 #calContainer {
-  padding: 5%;
+  width: 68%;
+  float: right;
+  padding: 2%;
 }
 
 #messageForm {
-  display: inline-block;
-  width: 70%;
-  margin-left: 15%;
+  width: 80%;
+  margin-left: 10%;
 }
 
 #post {
   display: inline-block;
-  width: 70%;
-  margin-left: 15%;
+  width: 80%;
+  margin-left: 10%;
 }
+
 #messageHead{
   display: block;
   width: 100%;
@@ -38,8 +42,12 @@
   font-weight: bold;
 }
 #messBoard {
-  width: 75%;
-  margin-left: 12.5%;
+  width: 68%;
+  float: right;
+}
+
+#postButton {
+  margin-top: 25%;
 }
 
 #creategroupForm {

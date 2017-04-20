@@ -2,11 +2,3 @@
 <%= link_to "New Event", new_user_event_path(current_user) %> <br />
 
 <div id="calendar"></div>
-
-  <% @events.each do |event| %>
-    <%= User.find(event.user_id).first_name %></br>
-    <%= event.title %></br>
-    <%= event.event_location %></br>
-    <%= link_to "Edit", edit_user_event_path(current_user, event) %></br>
-  <% end %>
-  <br />

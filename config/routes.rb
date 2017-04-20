@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   get "/" => "groups#home"
   get "/home" => "groups#home"
   get "/getevents" => "groups#getevents"
-  get "/adduser/:ids" => "users#add"
+  get "/adduser" => "users#add"
 
 end
